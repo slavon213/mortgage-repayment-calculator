@@ -17,80 +17,85 @@
     </head>
     <body>
         <main>
-            <div>
-                <form>
-                    <div class="header">
-                        <h1 class="text-preset-2">Mortgage Calculator</h1>
-                        <button type="reset" class="text-preset-4">
-                            Clear All
-                        </button>
-                    </div>
-
-                    <div>
-                        <label for="amount" class="text-preset-4"
-                            >Mortgage Amount</label
-                        >
-                        <input type="text" id="amount" />
-                    </div>
-
-                    <div>
-                        <div>
-                            <label for="term" class="text-preset-4">Mortgage Term</label>
-                            <input type="text" name="term" id="term" />
+            <div class="container">
+                <div class="half first">
+                    <form>
+                        <div class="header flx">
+                            <h1 class="text-preset-2">Mortgage Calculator</h1>
+                            <button type="reset" class="text-preset-4">
+                                Clear All
+                            </button>
                         </div>
-
-                        <div>
-                          <label class="text-preset-4">Interest Rate</label>
-                          <input type="text" id="rate"/>
+    
+                        <div class="inputs flx-column">
+                            <div class="flx-column">
+                                <label for="amount" class="text-preset-4"
+                                    >Mortgage Amount</label
+                                >
+                                <input type="text" id="amount" />
+                            </div>
+        
+                            <div class="flx two-inputs">
+                                <div class="flx-column">
+                                    <label for="term" class="text-preset-4">Mortgage Term</label>
+                                    <input type="text" name="term" id="term" />
+                                </div>
+        
+                                <div class="flx-column">
+                                  <label class="text-preset-4">Interest Rate</label>
+                                  <input type="text" id="rate"/>
+                                </div>
+                            </div>
+        
+                            <div class="flx-column">
+                                <label for="repayment">Mortgage Type</label>
+                              <div class="checkbox">
+                                  <input type="checkbox" name="repayment" id="repayment" />
+                                <label for="repayment" class="text-preset-3">Repayment</label>
+                              </div> 
+                              <div class="checkbox">
+                                  <input type="checkbox" name="interestOnly" id="interestOnly" />
+                                  <label for="interestOnly" class="text-preset-3">Interest Only</label>
+                              </div>
+                            </div>
                         </div>
-                    </div>
-
-                    <div>Mortgage 
-                      <div>
-                        <label for="repayment" class="text-preset-3">Type Repayment</label>
-                        <input type="checkbox" name="repayment" id="repayment" />
-                      </div> 
-                      <div>
-                        <label for="interestOnly" class="text-preset-3">Interest Only</label>
-                        <input type="checkbox" name="interestOnly" id="interestOnly" />
-                      </div>
-                    </div>
-
-                    <button type="submit" class="text-preset-3">Calculate Repayments</button>
-                </form>
-            </div>
-
-            <div>
-                <!-- Empty results start -->
-
-                <div>
-                    <h2 class="text-preset-2">Results shown here</h2>
-
-                    <p class="text-preset-2">
-                      Complete the form and click “calculate repayments” to see
-                      what your monthly repayments would be.
-                    </p>
+    
+                        <button type="submit" class="text-preset-3">Calculate Repayments</button>
+                    </form>
                 </div>
-
-                <!-- Empty results end -->
-
-                <!-- Completed results start -->
-
-                <div>
-                    <h2 class="text-preset-2">Your results</h2>
-
-                    <p class="text-preset-4">
-                        Your results are shown below based on the information
-                        you provided. To adjust the results, edit the form and
-                        click “calculate repayments” again.
-                    </p>
-                    <p class="text-preset-4">Your monthly repayments</p>
-
-                    <p class="text-preset-4">Total you'll repay over the term</p>
-                    <p><span class="text-preset-1">345345454,34534542345.25</span></p>
+    
+                <div class="half second">
+                    <!-- Empty results start -->
+    
+                    <div>
+                        <h2 class="text-preset-2">Results shown here</h2>
+    
+                        <p class="text-preset-2">
+                          Complete the form and click “calculate repayments” to see
+                          what your monthly repayments would be.
+                        </p>
+                    </div>
+    
+                    <!-- Empty results end -->
+    
+                    <!-- Completed results start -->
+    
+                    <div>
+                        <h2 class="text-preset-2">Your results</h2>
+    
+                        <p class="text-preset-4">
+                            Your results are shown below based on the information
+                            you provided. To adjust the results, edit the form and
+                            click “calculate repayments” again.
+                        </p>
+                        <p class="text-preset-4">Your monthly repayments</p>
+    
+                        <p class="text-preset-4">Total you'll repay over the term</p>
+                        <p><span class="text-preset-1">345345454,34534542345.25</span></p>
+                    </div>
+    
+                    <!-- Completed results end -->
                 </div>
-
-                <!-- Completed results end -->
             </div>
         </main>
     </body>

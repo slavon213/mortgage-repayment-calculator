@@ -32,6 +32,13 @@
     --spacing-300: 24px;
     --spacing-400: 32px;
     --spacing-500: 40px;
+    --spacing-600: 48px;
+
+    /* Radius */
+
+    --radius-50: 4px;
+    --radius-300: 24px;
+    --radius-1000: 80px;
 }
 
 *,
@@ -47,15 +54,28 @@ body {
     min-height: 100vh;
 }
 
-h1, h2, h3, p, button {
+h1,
+h2,
+h3,
+p,
+button {
     font: inherit;
-
 }
 
 body {
     font-family: "Plus Jakarta Sans";
     font-size: 16px;
     font-weight: 500;
+    background-color: var(--color-slate-100);
+    display: grid;
+    place-content: center;
+    color: var(--color-slate-700);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-500);
 }
 
 .text-preset-1 {
@@ -79,16 +99,87 @@ body {
     letter-spacing: -1px;
 }
 
-
 .text-preset-4 {
     font-size: 16px;
     font-weight: 500;
     line-height: 150%;
 }
 
-
 .text-preset-5 {
     font-size: 14px;
     font-weight: 500;
     line-height: 150%;
+}
+
+.flx-column {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: var(--spacing-150);
+}
+
+.flx {
+    display: flex;
+}
+
+.container {
+    width: 1008px;
+    height: auto;
+    border: 1px solid red;
+    display: flex;
+    justify-content: center;
+    /* gap: var(--spacing-500); */
+    max-width: 1008px;
+    background-color: var(--color-white);
+    overflow: hidden;
+    border-radius: var(--radius-300);
+}
+
+.half {
+    width: 50%;
+    flex-grow: 1;
+}
+
+.first {
+    padding: var(--spacing-500);
+}
+
+.second {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-slate-900);
+    border-bottom-left-radius: var(--radius-1000);
+}
+
+.inputs {
+    gap: var(--spacing-300);
+}
+
+.two-inputs {
+    gap: var(--spacing-300);
+}
+
+.inputs input,
+.checkbox {
+    width: 100%;
+    height: var(--spacing-600);
+    border-radius: var(--radius-50);
+    border: 1px solid var(--color-slate-500);
+    padding: var(--spacing-200);
+}
+
+.checkbox {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    input[type="checkbox"] {
+        width: auto;
+        position: absolute;
+        left: 0;
+        top: 0;
+
+        /* opacity: 0;
+        visibility: hidden; */
+    }
 }
