@@ -52,6 +52,7 @@
 html,
 body {
     min-height: 100vh;
+    /* accent-color: var(--color-lime); */
 }
 
 h1,
@@ -76,6 +77,11 @@ form {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-500);
+}
+
+a {
+    text-decoration: underline;
+    color: inherit;
 }
 
 .text-preset-1 {
@@ -151,6 +157,15 @@ form {
     border-bottom-left-radius: var(--radius-1000);
 }
 
+.header {
+    justify-content: space-between;
+    align-items: flex-end;
+
+    h1 {
+        color: var(--color-slate-900);
+    }
+}
+
 .inputs {
     gap: var(--spacing-300);
 }
@@ -172,14 +187,10 @@ form {
     position: relative;
     display: flex;
     align-items: center;
+    color: var(--color-slate-900);
+    padding-inline-start: 56px;
 
-    input[type="checkbox"] {
-        width: auto;
-        position: absolute;
-        left: 0;
-        top: 0;
-
-        /* opacity: 0;
-        visibility: hidden; */
+    input[type="radio"] {
+        width: 24px;
     }
 }
