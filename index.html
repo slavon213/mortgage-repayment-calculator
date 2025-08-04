@@ -5,12 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <!-- displays site properly based on user's device -->
 
-        <link
-            rel="icon"
-            type="image/png"
-            sizes="32x32"
-            href="./assets/images/favicon-32x32.png"
-        />
+        <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png" />
         <link rel="stylesheet" href="./style.css" />
 
         <title>Frontend Mentor | Mortgage repayment calculator</title>
@@ -22,78 +17,75 @@
                     <form>
                         <div class="header flx">
                             <h1 class="text-preset-2">Mortgage Calculator</h1>
-                            <a href="#" class="text-preset-4">
-                                Clear All
-                            </a>
+                            <a href="#" class="text-preset-4"> Clear All </a>
                         </div>
-    
-                        <div class="inputs flx-column">
+
+                        <div class="calculator flx-column">
                             <div class="flx-column">
-                                <label for="amount" class="text-preset-4"
-                                    >Mortgage Amount</label
-                                >
-                                <input type="text" id="amount" />
+                                <label for="amount" class="text-preset-4">Mortgage Amount</label>
+                                <input type="text" id="amount" class="input text-preset-3" />
                             </div>
-        
+
                             <div class="flx two-inputs">
                                 <div class="flx-column">
                                     <label for="term" class="text-preset-4">Mortgage Term</label>
-                                    <input type="text" name="term" id="term" />
+                                    <input type="text" name="term" id="term" class="input text-preset-3" />
                                 </div>
-        
+
                                 <div class="flx-column">
-                                  <label class="text-preset-4">Interest Rate</label>
-                                  <input type="text" id="rate"/>
+                                    <label for="rate" class="text-preset-4">Interest Rate</label>
+                                    <input type="text" id="rate" class="input text-preset-3" />
                                 </div>
                             </div>
-        
+
                             <div class="flx-column">
                                 <label for="repayment">Mortgage Type</label>
-                              <div class="checkbox">
-                                  <input type="radio" name="mor-type" id="repayment" />
-                                <label for="repayment" class="text-preset-3">Repayment</label>
-                              </div> 
-                              <div class="checkbox">
-                                  <input type="radio" name="mor-type" id="interestOnly" />
-                                  <label for="interestOnly" class="text-preset-3">Interest Only</label>
-                              </div>
+                                <label class="input text-preset-3 radio">
+                                    <input type="radio" name="mor-type" id="repayment" />
+                                    <div class="radio-icon"></div>
+                                    <p>Repayment</p>
+                                </label>
+                                <label class="input text-preset-3 radio">
+                                    <input type="radio" name="mor-type" id="interestOnly" />
+                                    <div class="radio-icon"></div>
+                                    <p class="text-preset-3">Interest Only</p>
+                                </label>
                             </div>
                         </div>
-    
+
                         <button type="submit" class="text-preset-3">Calculate Repayments</button>
                     </form>
                 </div>
-    
+
                 <div class="half second">
                     <!-- Empty results start -->
-    
+
                     <div>
                         <h2 class="text-preset-2">Results shown here</h2>
-    
+
                         <p class="text-preset-2">
-                          Complete the form and click “calculate repayments” to see
-                          what your monthly repayments would be.
+                            Complete the form and click “calculate repayments” to see what your monthly repayments would
+                            be.
                         </p>
                     </div>
-    
+
                     <!-- Empty results end -->
-    
+
                     <!-- Completed results start -->
-    
+
                     <div>
                         <h2 class="text-preset-2">Your results</h2>
-    
+
                         <p class="text-preset-4">
-                            Your results are shown below based on the information
-                            you provided. To adjust the results, edit the form and
-                            click “calculate repayments” again.
+                            Your results are shown below based on the information you provided. To adjust the results,
+                            edit the form and click “calculate repayments” again.
                         </p>
                         <p class="text-preset-4">Your monthly repayments</p>
-    
+
                         <p class="text-preset-4">Total you'll repay over the term</p>
                         <p><span class="text-preset-1">345345454,34534542345.25</span></p>
                     </div>
-    
+
                     <!-- Completed results end -->
                 </div>
             </div>
