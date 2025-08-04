@@ -92,6 +92,7 @@ input {
     border: none;
     background-color: transparent;
     outline: none;
+    position: relative;
 }
 
 .text-preset-1 {
@@ -193,9 +194,8 @@ input {
     width: 100%;
 }
 
-
-
 .input {
+    display: flex;
     width: 100%;
     padding-inline: 16px;
     padding-block: 12px;
@@ -206,12 +206,21 @@ input {
     color: var(--color-slate-900);
     cursor: pointer;
     transition: all var(--transition-end);
+    position: relative;
+    overflow: hidden;
 
     &:hover {
         transition: all var(--transition-start);
         border-color: var(--color-slate-900);
     }
 }
+/* 
+.input span {
+    position: absolute;
+    top: 0;
+    padding: 12px 16px;
+    background-color: var(--color-slate-100);
+} */
 
 .radio {
     display: inline-flex;
@@ -278,8 +287,10 @@ input {
     }
 }
 
-/* .prefix {
+.prefix {
+    left: 0;
 }
 
 .suffix {
-} */
+    right: 0;
+}
