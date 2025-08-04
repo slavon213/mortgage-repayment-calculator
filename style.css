@@ -15,7 +15,7 @@
 :root {
     /* Colors */
     --color-lime: hsl(61, 70%, 52%);
-    --color-lime-light: #D8DB2F;
+    --color-lime-light:  hsl(61, 70%, 76%) ;
     --color-red: hsl(4, 69%, 50%);
     --color-white: hsl(0, 0%, 100%);
     --color-slate-100: hsl(202, 86%, 94%);
@@ -88,21 +88,21 @@ a {
     font-size: 56px;
     font-weight: 700;
     line-height: 125%;
-    letter-spacing: -1px;
+    /* letter-spacing: -1px; */
 }
 
 .text-preset-2 {
     font-size: 24px;
     font-weight: 700;
     line-height: 125%;
-    letter-spacing: -1px;
+    /* letter-spacing: -1px; */
 }
 
 .text-preset-3 {
     font-size: 18px;
     font-weight: 700;
     line-height: 125%;
-    letter-spacing: -1px;
+    /* letter-spacing: -1px; */
 }
 
 .text-preset-4 {
@@ -194,7 +194,7 @@ a {
     align-items: center;
     gap: 16px;
     cursor: pointer;
-    
+
     &:hover {
         border-color: var(--color-lime);
     }
@@ -207,15 +207,14 @@ a {
         border-color: var(--color-lime);
     }
 
-    input[type="radio"]:checked + .radio-icon::after {
-        content: '';
+    input[type="radio"]:checked + .radio-icon::before {
+        content: "";
         display: block;
         width: 100%;
         height: 100%;
         background-color: var(--color-lime);
         border-radius: 50%;
     }
-    
 }
 
 .radio-icon {
@@ -224,4 +223,31 @@ a {
     border: 1px solid var(--color-slate-700);
     border-radius: 50%;
     padding: 3px;
+}
+
+.calculate {
+    width: 75%;
+    background-color: var(--color-lime);
+    padding-inline: 40px;
+    padding-block: 16.5px;
+    gap: 16px;
+    border: none;
+    outline: none;
+    border-radius: var(--radius-1000);
+    display: flex;
+    align-items: center;
+
+    &:hover {
+        background-color: var(--color-lime-light);
+    }
+
+
+    span {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        background: url("./assets/images/icon-calculator.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
 }
