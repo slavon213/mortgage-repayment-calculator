@@ -15,7 +15,7 @@
 :root {
     /* Colors */
     --color-lime: hsl(61, 70%, 52%);
-    --color-lime-light:  hsl(61, 70%, 76%) ;
+    --color-lime-light: hsl(61, 70%, 76%);
     --color-red: hsl(4, 69%, 50%);
     --color-white: hsl(0, 0%, 100%);
     --color-slate-100: hsl(202, 86%, 94%);
@@ -38,6 +38,10 @@
     --radius-50: 4px;
     --radius-300: 24px;
     --radius-1000: 80px;
+
+    /* Transitions */
+    --transition-start: 0.1s ease;
+    --transition-end: 0.5s ease;
 }
 
 *,
@@ -164,6 +168,15 @@ a {
     h1 {
         color: var(--color-slate-900);
     }
+
+    a {
+        transition: var(--transition-end);
+    }
+
+    a:hover {
+        transition: var(--transition-start);
+        color: var(--color-slate-900);
+    }
 }
 
 .calculator {
@@ -187,6 +200,16 @@ a {
     border-radius: var(--radius-50);
     font-family: inherit;
     color: var(--color-slate-900);
+    cursor: pointer;
+    transition: all var(--transition-end);
+
+
+    &:hover {
+        transition: all var(--transition-start);
+        border-color: var(--color-slate-900);
+        
+        
+    }
 }
 
 .radio {
@@ -236,11 +259,13 @@ a {
     border-radius: var(--radius-1000);
     display: flex;
     align-items: center;
+    transition: all var(--transition-end);
+    cursor: pointer;
 
     &:hover {
+        transition: all var(--transition-start);
         background-color: var(--color-lime-light);
     }
-
 
     span {
         display: inline-block;
