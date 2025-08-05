@@ -20,9 +20,11 @@
     --color-white: hsl(0, 0%, 100%);
     --color-slate-100: hsl(202, 86%, 94%);
     --color-slate-300: hsl(203, 41%, 72%);
+    --color-slate-300-opacity: hsla(203, 41%, 72%, 0.25);
     --color-slate-500: hsl(200, 26%, 54%);
     --color-slate-700: hsl(200, 24%, 40%);
     --color-slate-900: hsl(202, 55%, 16%);
+    --color-card: hsl(202, 56%, 12%);
 
     /* Spacing */
     --spacing-100: 8px;
@@ -36,6 +38,7 @@
     /* Radius */
 
     --radius-50: 4px;
+    --radius-100: 8px;
     --radius-300: 24px;
     --radius-1000: 80px;
 
@@ -168,13 +171,20 @@ input {
 }
 
 .second {
-    /* display: flex;
-    flex-direction: column; */
     display: grid;
-    place-content: center;
+    place-content: start;
     background-color: var(--color-slate-900);
     border-bottom-left-radius: var(--radius-1000);
     padding: 40px;
+
+    h2 {
+        color: var(--color-white);
+        margin-block-end: 16px;
+    }
+
+    p {
+        color: var(--color-slate-300);
+    }
 }
 
 .header {
@@ -309,13 +319,37 @@ input {
 }
 
 .pending {
+    width: 100%;
     place-items: center;
+    align-content: center;
+
     text-align: center;
     gap: var(--spacing-200);
+}
 
-    h2 {
-        color: var(--color-white);
+.result {
+    width: 100%;
+    gap: 40px;
+}
+
+.big-numbers {
+    color: var(--color-lime);
+}
+
+.small-numbers {
+    color: var(--color-white);
+}
+
+.card {
+    padding: 32px;
+    border-top: 4px solid var(--color-lime);
+    border-radius: var(--radius-100);
+    background-color: var(--color-card);
+    gap: 32px;
+    /* margin-block-end: auto; */
+
+    hr {
+        border: none;
+        border-bottom: 1px solid var(--color-slate-300-opacity);
     }
-
-    color: var(--color-slate-300);
 }
