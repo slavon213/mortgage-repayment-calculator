@@ -140,9 +140,7 @@ input {
 
 .grd {
     display: grid;
-    align-items: center;
 }
-
 
 .grd input {
     width: 100%;
@@ -170,10 +168,13 @@ input {
 }
 
 .second {
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
+    display: grid;
+    place-content: center;
     background-color: var(--color-slate-900);
     border-bottom-left-radius: var(--radius-1000);
+    padding: 40px;
 }
 
 .header {
@@ -294,16 +295,27 @@ input {
 }
 
 .prefix {
-  grid-template-columns: auto 1fr;
-  padding: 0;
-  padding-inline-end: var(--spacing-200);
-  gap: var(--spacing-200);
+    grid-template-columns: auto 1fr;
+    padding: 0;
+    padding-inline-end: var(--spacing-200);
+    gap: var(--spacing-200);
 }
 
 .suffix {
-  grid-template-columns: 1fr auto;
-  
-  padding: 0;
-  padding-inline-start: 16px;
-  gap: var(--spacing-200);
+    grid-template-columns: 1fr auto;
+    padding: 0;
+    padding-inline-start: 16px;
+    gap: var(--spacing-200);
+}
+
+.pending {
+    place-items: center;
+    text-align: center;
+    gap: var(--spacing-200);
+
+    h2 {
+        color: var(--color-white);
+    }
+
+    color: var(--color-slate-300);
 }
