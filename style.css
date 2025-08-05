@@ -151,11 +151,11 @@ input {
 
 .container {
     width: 1008px;
+    /* max-width: 1008px; */
     height: auto;
     /* border: 1px solid red; */
     display: flex;
     justify-content: center;
-    max-width: 1008px;
     background-color: var(--color-white);
     overflow: hidden;
     border-radius: var(--radius-300);
@@ -276,7 +276,7 @@ input {
 }
 
 .calculate {
-    width: 75%;
+    width: 314px;
     background-color: var(--color-lime);
     padding-inline: 40px;
     padding-block: 16.5px;
@@ -351,5 +351,26 @@ input {
     hr {
         border: none;
         border-bottom: 1px solid var(--color-slate-300-opacity);
+    }
+}
+
+@media (max-width: 1008px) {
+    .container {
+        width: 688px;
+        /* flex-wrap: wrap; */
+        flex-direction: column;
+    }
+
+    .half {
+        width: 100%;
+    }
+
+    .second {
+        border-radius: 0;
+    }
+
+    .calculate {
+        gap: 12px;
+        /* width: 60%; */
     }
 }
