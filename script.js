@@ -38,9 +38,9 @@ buttonsMortgageType.forEach((button) => {
 });
 
 function clearBackground(elements, parent) {
-    elements.forEach(element =>{
+    elements.forEach((element) => {
         element.closest(parent).style.backgroundColor = "transparent";
-    })
+    });
 }
 
 function clearForm() {
