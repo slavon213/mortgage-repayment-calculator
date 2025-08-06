@@ -7,6 +7,8 @@ const buttonsMortgageType = document.querySelectorAll("input[type='radio']");
 const buttonCalculate = document.getElementById("calculate");
 const displayBlock = document.querySelector(".half.second");
 
+const colorLimeLight = "hsla(61, 70%, 76%, .25)";
+
 const emptyResult = () => {
     const emptyResultDiv = document.createElement("div");
     emptyResultDiv.classList.add("pending");
@@ -23,8 +25,23 @@ const emptyResult = () => {
     displayBlock.appendChild(emptyResultDiv);
 };
 
-
 buttonClear.addEventListener("click", clearForm);
+
+buttonsMortgageType.forEach((button) => {
+    button.addEventListener("click", function () {
+        const inputContainer = this.closest("label");
+        buttonsMortgageType.forEach((radio) => {
+            radio.closest("label").style.backgroundColor = "transparent";
+        });
+        if (this.checked) {
+            inputContainer.style.backgroundColor = colorLimeLight;
+        }
+    });
+});
+
+function clearBackground(element) {
+    element.style.backgroundColor = "";
+}
 
 function clearForm() {
     formCalculator.reset();
@@ -36,8 +53,6 @@ function clearChecked(elements) {
         element.checked = false;
     });
 }
-
-
 
 function decimalInput(value) {
     value = value.replace(/[^\d.]+/g, "");
@@ -62,24 +77,21 @@ function decimalInput(value) {
     return value;
 }
 
-
 function integerInput(value) {
     value = value.replace(/[^\d]+/g, "");
     return value;
 }
 
-
-
-amountInput.addEventListener("input", function(){
+amountInput.addEventListener("input", function () {
     this.value = integerInput(this.value);
-})
+});
 
-termInput.addEventListener("input", function(){
+termInput.addEventListener("input", function () {
     this.value = integerInput(this.value).substring(0, 2);
-})
+});
 
-rateInput.addEventListener("input", function(){
-    this.value = decimalInput(this.value).substring(0,5);
-})
+rateInput.addEventListener("input", function () {
+    this.value = decimalInput(this.value).substring(0, 5);
+});
 
 emptyResult();
