@@ -2,7 +2,7 @@ const formCalculator = document.forms[0];
 const buttonClear = document.getElementById("clearAll");
 const amountInput = document.getElementById("amount");
 const termInput = document.getElementById("term");
-const rateInput = document.getElementById("ratee");
+const rateInput = document.getElementById("rate");
 const buttonsMortgageType = document.querySelectorAll("input[type='radio']");
 const buttonCalculate = document.getElementById("calculate");
 const displayBlock = document.querySelector(".half.second");
@@ -24,7 +24,6 @@ const emptyResult = () => {
 };
 
 
-emptyResult();
 buttonClear.addEventListener("click", clearForm);
 
 function clearForm() {
@@ -37,3 +36,50 @@ function clearChecked(elements) {
         element.checked = false;
     });
 }
+
+
+
+function decimalInput(value) {
+    value = value.replace(/[^\d.]+/g, "");
+    const parts = value.split(".");
+
+    if (parts.length > 2) {
+        value = parts[0] + "." + parts.slice(1, 3).join("");
+    }
+
+    if (value.includes(".")) {
+        const dotIndex = value.indexOf(".");
+        const intPart = value.substring(0, dotIndex);
+        let decimalPart = value.substring(dotIndex + 1);
+
+        if (decimalPart.length > 2) {
+            decimalPart = decimalPart.substring(0, 2);
+        }
+
+        value = intPart + "." + decimalPart;
+    }
+
+    return value;
+}
+
+
+function integerInput(value) {
+    value = value.replace(/[^\d]+/g, "");
+    return value;
+}
+
+
+
+amountInput.addEventListener("input", function(){
+    this.value = integerInput(this.value);
+})
+
+termInput.addEventListener("input", function(){
+    this.value = integerInput(this.value).substring(0, 2);
+})
+
+rateInput.addEventListener("input", function(){
+    this.value = decimalInput(this.value).substring(0,5);
+})
+
+emptyResult();
