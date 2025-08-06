@@ -164,18 +164,15 @@ input {
 .half {
     width: 50%;
     flex-grow: 1;
-}
-
-.first {
     padding: var(--spacing-500);
 }
+
 
 .second {
     display: grid;
     place-content: start;
     background-color: var(--color-slate-900);
     border-bottom-left-radius: var(--radius-1000);
-    padding: 40px;
 
     h2 {
         color: var(--color-white);
@@ -276,11 +273,12 @@ input {
 }
 
 .calculate {
-    width: 314px;
+    /* width: 314px; */
+    align-self: flex-start;
     background-color: var(--color-lime);
     padding-inline: 40px;
     padding-block: 16.5px;
-    gap: 16px;
+    gap: 12px;
     border: none;
     outline: none;
     border-radius: var(--radius-1000);
@@ -359,6 +357,7 @@ input {
         width: 688px;
         /* flex-wrap: wrap; */
         flex-direction: column;
+        padding: ;
     }
 
     .half {
@@ -368,9 +367,30 @@ input {
     .second {
         border-radius: 0;
     }
+}
 
-    .calculate {
-        gap: 12px;
-        /* width: 60%; */
+@media (max-width: 688px) {
+    .container {
+        width: 375px;
+        /* flex-wrap: wrap; */
+        flex-direction: column;
+    }
+
+    /* form {
+        gap: var(--spacing-300);
+    } */
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-100);
+    }
+
+    .half {
+        padding-block: var(--spacing-400);
+        padding-inline: var(--spacing-300);
+    }
+    .two-inputs {
+        flex-direction: column;
     }
 }
