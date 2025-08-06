@@ -30,22 +30,23 @@ buttonClear.addEventListener("click", clearForm);
 buttonsMortgageType.forEach((button) => {
     button.addEventListener("click", function () {
         const inputContainer = this.closest("label");
-        buttonsMortgageType.forEach((radio) => {
-            radio.closest("label").style.backgroundColor = "transparent";
-        });
+        clearBackground(buttonsMortgageType, "label");
         if (this.checked) {
             inputContainer.style.backgroundColor = colorLimeLight;
         }
     });
 });
 
-function clearBackground(element) {
-    element.style.backgroundColor = "";
+function clearBackground(elements, parent) {
+    elements.forEach(element =>{
+        element.closest(parent).style.backgroundColor = "transparent";
+    })
 }
 
 function clearForm() {
     formCalculator.reset();
     clearChecked(buttonsMortgageType);
+    clearBackground(buttonsMortgageType, "label");
 }
 
 function clearChecked(elements) {
