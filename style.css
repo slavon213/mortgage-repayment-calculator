@@ -97,6 +97,8 @@ input {
     position: relative;
 }
 
+
+
 .text-preset-1 {
     font-size: 56px;
     font-weight: 700;
@@ -372,7 +374,6 @@ input {
 @media (max-width: 688px) {
     .container {
         width: 375px;
-<<<<<<< HEAD
         flex-direction: column;
         border-radius: 0;
     }
@@ -380,15 +381,7 @@ input {
     form {
         gap: var(--spacing-300);
     }
-=======
-        /* flex-wrap: wrap; */
-        flex-direction: column;
-    }
 
-    /* form {
-        gap: var(--spacing-300);
-    } */
->>>>>>> efc6dffe9c9117e080df4808a594856225c894ee
 
     .header {
         flex-direction: column;

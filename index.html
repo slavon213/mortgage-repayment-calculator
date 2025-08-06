@@ -17,7 +17,7 @@
                     <form autocomplete="off">
                         <div class="header flx">
                             <h1 class="text-preset-2">Mortgage Calculator</h1>
-                            <a href="#" class="text-preset-4"> Clear All </a>
+                            <a href="#" class="text-preset-4" id="clearAll"> Clear All </a>
                         </div>
 
                         <div class="calculator flx-column">
@@ -50,19 +50,19 @@
                             <div class="flx-column">
                                 <label for="repayment">Mortgage Type</label>
                                 <label class="input text-preset-3 radio">
-                                    <input type="radio" name="mor-type" id="repayment" />
+                                    <input type="radio" name="mor-type" id="repayment" data-option="repaiment"/>
                                     <div class="radio-icon"></div>
                                     <p>Repayment</p>
                                 </label>
                                 <label class="input text-preset-3 radio">
-                                    <input type="radio" name="mor-type" id="interestOnly" />
+                                    <input type="radio" name="mor-type" id="interestOnly" data-option="interest"/>
                                     <div class="radio-icon"></div>
                                     <p class="text-preset-3">Interest Only</p>
                                 </label>
                             </div>
                         </div>
 
-                        <button type="submit" class="calculate text-preset-3"><span></span>Calculate Repayments</button>
+                        <button type="submit" class="calculate text-preset-3" id="calculate"><span></span>Calculate Repayments</button>
                     </form>
                 </div>
 
@@ -108,5 +108,6 @@
                 </div>
             </div>
         </main>
+        <script src="./script.js"></script>
     </body>
 </html>
