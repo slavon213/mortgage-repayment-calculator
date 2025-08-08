@@ -38,7 +38,8 @@ buttonCalculate.addEventListener("click", () => {
 buttonsMortgageType.forEach((button) => {
     button.addEventListener("click", function () {
         const inputContainer = this.closest("label");
-        clearErrors(buttonsMortgageType, "label");
+
+        clearRadioBackground(buttonsMortgageType, "label");
         if (this.checked) {
             inputContainer.style.backgroundColor = colorLimeLight;
         }
@@ -68,6 +69,13 @@ function clearChecked(elements) {
 
 function clearTextContent(elements) {
     elements.forEach((element) => (element.textContent = ""));
+}
+
+function clearRadioBackground(elements, parent) {
+    elements.forEach((element) => {
+        const parentElement = element.closest(parent);
+        parentElement.style.backgroundColor = "";
+    });
 }
 
 function decimalInput(value) {
@@ -117,7 +125,6 @@ function getRepaymentType() {
 }
 
 function calculate(amount, term, rate, mortgageType = "repayment") {
-
     let monthlyPayment;
     let repayOver;
     const monthTerm = term * 12;
@@ -179,9 +186,7 @@ function mainProcess() {
         const amount = parseInt(amountInput.value);
         const years = parseInt(termInput.value);
         const interest = parseFloat(rateInput.value);
-        console.log(amount, years, interest);
         const mortgageType = getRepaymentType();
-        console.log(mortgageType);
 
         const result = calculate(amount, years, interest, mortgageType);
         console.log(result);
