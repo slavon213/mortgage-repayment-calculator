@@ -28,7 +28,7 @@ const emptyResult = () => {
 buttonClear.addEventListener("click", clearForm);
 
 buttonCalculate.addEventListener("click", () => {
-    console.log(getRepaymentType());
+    calculate();
 });
 
 buttonsMortgageType.forEach((button) => {
@@ -105,4 +105,24 @@ function getRepaymentType() {
     return buttonChecked[0].dataset?.option;
 }
 
+function calculate(amount, term, rate, mortgageType = "repayment") {
+    let monthlyPayment;
+    let repayOver;
+    const monthTerm = term * 12;
+    const monthlyRate = rate / 100 / 12;
+    if (mortgageType === "repayment") {
+        monthlyPayment = (amount * monthlyRate * (1 + monthlyRate) ** monthTerm) / ((1 + monthlyRate) ** monthTerm - 1);
+    } else if (mortgageType === "interest") {
+        monthlyPayment = amount * monthlyRate;
+    }
+    repayOver = monthlyPayment * monthTerm;
+    return [monthlyPayment.toFixed(2), repayOver.toFixed(2)];
+    // const amount = parseInt(amountInput.value);
+    // const years = parseInt(termInput.value);
+    // const interest = parseFloat(rateInput.value);
+    // console.log(amount, years, interest);
+}
+
 emptyResult();
+console.log(calculate(100000, 2, 2, "repayment"));
+console.log(calculate(100000, 2, 2, "interest"));
