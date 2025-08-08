@@ -6,8 +6,10 @@ const rateInput = document.getElementById("rate");
 const buttonsMortgageType = document.querySelectorAll("input[type='radio']");
 const buttonCalculate = document.getElementById("calculate");
 const displayBlock = document.querySelector(".half.second");
-
+const smallElements = document.querySelectorAll("small");
 const colorLimeLight = "hsla(61, 70%, 76%, .25)";
+
+const inputFields = document.querySelectorAll("input[type='text']");
 
 const emptyResult = () => {
     const emptyResultDiv = document.createElement("div");
@@ -28,35 +30,44 @@ const emptyResult = () => {
 buttonClear.addEventListener("click", clearForm);
 
 buttonCalculate.addEventListener("click", () => {
-    calculate();
+    mainProcess();
+    // calculate();
+    // isValidInput();
 });
 
 buttonsMortgageType.forEach((button) => {
     button.addEventListener("click", function () {
         const inputContainer = this.closest("label");
-        clearBackground(buttonsMortgageType, "label");
+        clearErrors(buttonsMortgageType, "label");
         if (this.checked) {
             inputContainer.style.backgroundColor = colorLimeLight;
         }
     });
 });
 
-function clearBackground(elements, parent) {
+function clearErrors(elements, parent) {
     elements.forEach((element) => {
-        element.closest(parent).style.backgroundColor = "transparent";
+        const parentLabel = element.closest("label");
+        parentLabel.classList.remove("invalid");
+        parentLabel.classList.remove("invalid-prefix-suffix");
     });
 }
 
 function clearForm() {
     formCalculator.reset();
     clearChecked(buttonsMortgageType);
-    clearBackground(buttonsMortgageType, "label");
+    clearErrors(inputFields, "label");
+    clearTextContent(smallElements);
 }
 
 function clearChecked(elements) {
     elements.forEach((element) => {
         element.checked = false;
     });
+}
+
+function clearTextContent(elements) {
+    elements.forEach((element) => (element.textContent = ""));
 }
 
 function decimalInput(value) {
@@ -101,26 +112,80 @@ rateInput.addEventListener("input", function () {
 
 function getRepaymentType() {
     const buttonChecked = [...buttonsMortgageType].filter((button) => button.checked);
-
-    return buttonChecked[0].dataset?.option;
+    let result = buttonChecked[0].dataset?.option;
+    return result;
 }
 
 function calculate(amount, term, rate, mortgageType = "repayment") {
+
     let monthlyPayment;
     let repayOver;
     const monthTerm = term * 12;
+
     const monthlyRate = rate / 100 / 12;
+    console.log(monthlyRate);
     if (mortgageType === "repayment") {
+        console.log("repayment");
+
         monthlyPayment = (amount * monthlyRate * (1 + monthlyRate) ** monthTerm) / ((1 + monthlyRate) ** monthTerm - 1);
     } else if (mortgageType === "interest") {
+        console.log("interest");
         monthlyPayment = amount * monthlyRate;
     }
+    console.log(monthlyPayment);
+
     repayOver = monthlyPayment * monthTerm;
     return [monthlyPayment.toFixed(2), repayOver.toFixed(2)];
-    // const amount = parseInt(amountInput.value);
-    // const years = parseInt(termInput.value);
-    // const interest = parseFloat(rateInput.value);
-    // console.log(amount, years, interest);
+}
+
+function isValidInput(element) {
+    const parentLabel = element.closest("label");
+    const smallElement = parentLabel.nextElementSibling;
+    if (!element.value) {
+        smallElement.textContent = "This field is required";
+        parentLabel.classList.add("invalid");
+        parentLabel.classList.add("invalid-prefix-suffix");
+        return false;
+    } else {
+        smallElement.textContent = "";
+        parentLabel.classList.remove("invalid");
+        parentLabel.classList.remove("invalid-prefix-suffix");
+        return true;
+    }
+}
+
+function isValidRadioElements(elements) {
+    if (elements.length > 0) {
+        const noneChecked = [...elements].every((element) => !element.checked);
+
+        const parentLabel = elements[0].closest("label");
+        const smallElement = parentLabel.nextElementSibling.nextElementSibling;
+        if (noneChecked) {
+            smallElement.textContent = "This field is required";
+            return false;
+        } else {
+            smallElement.textContent = "";
+            return true;
+        }
+    }
+}
+
+function mainProcess() {
+    const validFields = [...inputFields].map((field) => isValidInput(field));
+    const allValidRadioButtons = isValidRadioElements(buttonsMortgageType);
+    const allValidFields = validFields.every((field) => field);
+
+    if (allValidRadioButtons && allValidFields) {
+        const amount = parseInt(amountInput.value);
+        const years = parseInt(termInput.value);
+        const interest = parseFloat(rateInput.value);
+        console.log(amount, years, interest);
+        const mortgageType = getRepaymentType();
+        console.log(mortgageType);
+
+        const result = calculate(amount, years, interest, mortgageType);
+        console.log(result);
+    }
 }
 
 emptyResult();

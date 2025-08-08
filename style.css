@@ -15,7 +15,7 @@
 :root {
     /* Colors */
     --color-lime: hsl(61, 70%, 52%);
-    --color-lime-light: hsla(61, 70%, 76%, .25);
+    --color-lime-light: hsla(61, 70%, 76%, 0.25);
     --color-red: hsl(4, 69%, 50%);
     --color-white: hsl(0, 0%, 100%);
     --color-slate-100: hsl(202, 86%, 94%);
@@ -97,7 +97,9 @@ input {
     position: relative;
 }
 
-
+small {
+    color: var(--color-red);
+}
 
 .text-preset-1 {
     font-size: 56px;
@@ -168,7 +170,6 @@ input {
     flex-grow: 1;
     padding: var(--spacing-500);
 }
-
 
 .second {
     display: grid;
@@ -354,12 +355,21 @@ input {
     }
 }
 
+
+.invalid {
+    border-color: var(--color-red);
+}
+
+.invalid-prefix-suffix span {
+    background-color: var(--color-red);
+    color: var(--color-white);
+}
 @media (max-width: 1008px) {
     .container {
         width: 688px;
         /* flex-wrap: wrap; */
         flex-direction: column;
-        padding: ;
+        /* padding: ; */
     }
 
     .half {
@@ -372,16 +382,20 @@ input {
 }
 
 @media (max-width: 688px) {
+    
+    .text-preset-1 {
+        font-size: 40px;
+    }
+    
     .container {
         width: 375px;
         flex-direction: column;
         border-radius: 0;
     }
-    
+
     form {
         gap: var(--spacing-300);
     }
-
 
     .header {
         flex-direction: column;
