@@ -27,6 +27,10 @@ const emptyResult = () => {
 
 buttonClear.addEventListener("click", clearForm);
 
+buttonCalculate.addEventListener("click", () => {
+    console.log(getRepaymentType());
+});
+
 buttonsMortgageType.forEach((button) => {
     button.addEventListener("click", function () {
         const inputContainer = this.closest("label");
@@ -94,5 +98,11 @@ termInput.addEventListener("input", function () {
 rateInput.addEventListener("input", function () {
     this.value = decimalInput(this.value).substring(0, 5);
 });
+
+function getRepaymentType() {
+    const buttonChecked = [...buttonsMortgageType].filter((button) => button.checked);
+
+    return buttonChecked[0].dataset?.option;
+}
 
 emptyResult();
