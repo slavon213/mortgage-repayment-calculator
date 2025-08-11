@@ -31,8 +31,6 @@ buttonClear.addEventListener("click", clearForm);
 
 buttonCalculate.addEventListener("click", () => {
     mainProcess();
-    // calculate();
-    // isValidInput();
 });
 
 buttonsMortgageType.forEach((button) => {
@@ -45,6 +43,10 @@ buttonsMortgageType.forEach((button) => {
         }
     });
 });
+
+function clearDisplayBlock() {
+    displayBlock.innerHTML = "";
+}
 
 function clearErrors(elements, parent) {
     elements.forEach((element) => {
@@ -59,6 +61,8 @@ function clearForm() {
     clearChecked(buttonsMortgageType);
     clearErrors(inputFields, "label");
     clearTextContent(smallElements);
+    clearDisplayBlock();
+    emptyResult();
 }
 
 function clearChecked(elements) {
@@ -130,17 +134,11 @@ function calculate(amount, term, rate, mortgageType = "repayment") {
     const monthTerm = term * 12;
 
     const monthlyRate = rate / 100 / 12;
-    console.log(monthlyRate);
     if (mortgageType === "repayment") {
-        console.log("repayment");
-
         monthlyPayment = (amount * monthlyRate * (1 + monthlyRate) ** monthTerm) / ((1 + monthlyRate) ** monthTerm - 1);
     } else if (mortgageType === "interest") {
-        console.log("interest");
         monthlyPayment = amount * monthlyRate;
     }
-    console.log(monthlyPayment);
-
     repayOver = monthlyPayment * monthTerm;
     return [monthlyPayment.toFixed(2), repayOver.toFixed(2)];
 }
@@ -177,6 +175,33 @@ function isValidRadioElements(elements) {
     }
 }
 
+function showResult(monthly, total) {
+    clearDisplayBlock();
+    const resultDiv = document.createElement("div");
+    resultDiv.classList.add("grd");
+    resultDiv.classList.add("result");
+    resultDiv.innerHTML = `<div>
+                            <h2 class="text-preset-2">Your results</h2>
+                            <p class="text-preset-4">
+                                Your results are shown below based on the information you provided. To adjust the results,
+                                edit the form and click “calculate repayments” again.
+                            </p>
+                        </div>
+                        <div class="card grd">
+                            <div>
+                                <p class="text-preset-4">Your monthly repayments</p>
+                                <p><span class="text-preset-1 big-numbers">&pound;${monthly}</span></p>
+                            </div>
+                            <hr>
+                            <div>
+                                <p class="text-preset-4">Total you'll repay over the term</p>
+                                <p><span class="text-preset-2 small-numbers">&pound;${total}</span></p>
+                            </div>
+                        </div>`;
+    displayBlock.style.placeContent = "start";
+    displayBlock.appendChild(resultDiv);
+}
+
 function mainProcess() {
     const validFields = [...inputFields].map((field) => isValidInput(field));
     const allValidRadioButtons = isValidRadioElements(buttonsMortgageType);
@@ -188,11 +213,10 @@ function mainProcess() {
         const interest = parseFloat(rateInput.value);
         const mortgageType = getRepaymentType();
 
-        const result = calculate(amount, years, interest, mortgageType);
-        console.log(result);
+        const [monthly, total] = calculate(amount, years, interest, mortgageType);
+        console.log(monthly, total);
+        showResult(monthly, total);
     }
 }
 
 emptyResult();
-console.log(calculate(100000, 2, 2, "repayment"));
-console.log(calculate(100000, 2, 2, "interest"));
