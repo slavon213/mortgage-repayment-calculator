@@ -8,7 +8,9 @@ const buttonCalculate = document.getElementById("calculate");
 const displayBlock = document.querySelector(".half.second");
 const smallElements = document.querySelectorAll("small");
 const colorLimeLight = "hsla(61, 70%, 76%, .25)";
-
+const currency = "GBP";
+const currentLocale = "en-GB";
+    
 const inputFields = document.querySelectorAll("input[type='text']");
 
 const emptyResult = () => {
@@ -176,6 +178,16 @@ function isValidRadioElements(elements) {
 }
 
 function showResult(monthly, total) {
+    const formattedMonthly = new Intl.NumberFormat(currentLocale, {
+        style: "currency",
+        currency: currency,
+    }).format(monthly);
+    const formattedTotal = new Intl.NumberFormat(currentLocale, {
+        style: "currency",
+        currency: currency,
+    }).format(monthly);
+
+
     clearDisplayBlock();
     const resultDiv = document.createElement("div");
     resultDiv.classList.add("grd");
@@ -190,12 +202,12 @@ function showResult(monthly, total) {
                         <div class="card grd">
                             <div>
                                 <p class="text-preset-4">Your monthly repayments</p>
-                                <p><span class="text-preset-1 big-numbers">&pound;${monthly}</span></p>
+                                <p><span class="text-preset-1 big-numbers">${formattedMonthly}</span></p>
                             </div>
                             <hr>
                             <div>
                                 <p class="text-preset-4">Total you'll repay over the term</p>
-                                <p><span class="text-preset-2 small-numbers">&pound;${total}</span></p>
+                                <p><span class="text-preset-2 small-numbers">${formattedTotal}</span></p>
                             </div>
                         </div>`;
     displayBlock.style.placeContent = "start";
