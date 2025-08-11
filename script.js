@@ -63,6 +63,7 @@ function clearForm() {
     clearChecked(buttonsMortgageType);
     clearErrors(inputFields, "label");
     clearTextContent(smallElements);
+    clearRadioBackground(buttonsMortgageType, "label");
     clearDisplayBlock();
     emptyResult();
 }
