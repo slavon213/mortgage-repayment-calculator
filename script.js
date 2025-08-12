@@ -186,7 +186,7 @@ function showResult(monthly, total) {
     const formattedTotal = new Intl.NumberFormat(currentLocale, {
         style: "currency",
         currency: currency,
-    }).format(monthly);
+    }).format(total);
 
 
     clearDisplayBlock();

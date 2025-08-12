@@ -342,19 +342,30 @@ small {
 }
 
 .card {
+    max-width: 100%;
     padding: 32px;
     border-top: 4px solid var(--color-lime);
     border-radius: var(--radius-100);
     background-color: var(--color-card);
     gap: 32px;
+    overflow: hidden;
     /* margin-block-end: auto; */
-
+    
     hr {
+        white-space: nowrap;
         border: none;
         border-bottom: 1px solid var(--color-slate-300-opacity);
     }
+  
 }
 
+.card.grd span {
+  display: inline-block;
+  max-width: 99%;           /* або інша ширина, яку хочеш обмежити */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
 .invalid {
     border-color: var(--color-red);
@@ -382,11 +393,10 @@ small {
 }
 
 @media (max-width: 688px) {
-    
     .text-preset-1 {
         font-size: 40px;
     }
-    
+
     .container {
         width: 375px;
         flex-direction: column;
