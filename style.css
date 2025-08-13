@@ -319,6 +319,10 @@ small {
     gap: var(--spacing-200);
 }
 
+span.active {
+    background-color: var(--color-lime);
+}
+
 .pending {
     width: 100%;
     place-items: center;

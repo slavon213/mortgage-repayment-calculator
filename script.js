@@ -3,11 +3,13 @@ const buttonClear = document.getElementById("clearAll");
 const amountInput = document.getElementById("amount");
 const termInput = document.getElementById("term");
 const rateInput = document.getElementById("rate");
+const mainInputs = [amountInput, termInput, rateInput];
 const buttonsMortgageType = document.querySelectorAll("input[type='radio']");
 const buttonCalculate = document.getElementById("calculate");
 const displayBlock = document.querySelector(".half.second");
 const smallElements = document.querySelectorAll("small");
 const colorLimeLight = "hsla(61, 70%, 76%, .25)";
+const colorLime = "hsl(61, 70%, 52%)";
 const currency = "GBP";
 const currentLocale = "en-GB";
     
@@ -45,6 +47,15 @@ buttonsMortgageType.forEach((button) => {
         }
     });
 });
+
+mainInputs.forEach(thisInput => {
+    thisInput.addEventListener("input", function(){
+        addBgOnInput(this);
+    });
+    thisInput.addEventListener("blur", function(){
+        removeBgOnBlur(this);
+    });
+})
 
 function clearDisplayBlock() {
     displayBlock.innerHTML = "";
@@ -113,6 +124,17 @@ function integerInput(value) {
     return value;
 }
 
+function addBgOnInput(element) {
+    const parent = element.closest("label");
+    const innerSpan = parent.querySelector("span");
+    innerSpan.classList.add("active");
+}
+
+function removeBgOnBlur(element) {
+    const parent = element.closest("label");
+    const innerSpan = parent.querySelector("span");
+    innerSpan.classList.remove("active");
+}
 amountInput.addEventListener("input", function () {
     this.value = integerInput(this.value);
 });
@@ -120,6 +142,7 @@ amountInput.addEventListener("input", function () {
 termInput.addEventListener("input", function () {
     this.value = integerInput(this.value).substring(0, 2);
 });
+
 
 rateInput.addEventListener("input", function () {
     this.value = decimalInput(this.value).substring(0, 5);
@@ -227,7 +250,6 @@ function mainProcess() {
         const mortgageType = getRepaymentType();
 
         const [monthly, total] = calculate(amount, years, interest, mortgageType);
-        console.log(monthly, total);
         showResult(monthly, total);
     }
 }
