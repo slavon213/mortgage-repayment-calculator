@@ -41,7 +41,7 @@
 ### Links
 
 - Solution URL: [GitHub](https://github.com/slavon213/mortgage-repayment-calculator)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [GitHub Pages](https://slavon213.github.io/mortgage-repayment-calculator/)
 
 ## My process
 
