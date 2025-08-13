@@ -1,0 +1,15 @@
+{
+  "name": "mortgage-calculator",
+  "version": "1.0.0",
+  "description": "Це домашнє завдання по [Mortgage repayment calculator challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/mortgage-repayment-calculator-Galx1LXK73)",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jsdoc": "^4.0.4"
+  }
+}

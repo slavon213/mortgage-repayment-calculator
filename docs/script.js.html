@@ -1,4 +1,32 @@
-/**
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: script.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: script.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
  * Основна форма калькулятора, перша форма на сторінці.
  * @type {HTMLFormElement}
  */
@@ -36,7 +64,7 @@ const inputFields = document.querySelectorAll("input[type='text']");
 
 /**
  * Колекція радіо-кнопок для вибору типу іпотеки.
- * @type {NodeListOf<HTMLInputElement>}
+ * @type {NodeListOf&lt;HTMLInputElement>}
  */
 const buttonsMortgageType = document.querySelectorAll("input[type='radio']");
 
@@ -53,8 +81,8 @@ const buttonCalculate = document.getElementById("calculate");
 const displayBlock = document.querySelector(".half.second");
 
 /**
- * Колекція елементів <small>, для повідомлень про помилки.
- * @type {NodeListOf<HTMLElement>}
+ * Колекція елементів &lt;small>, для повідомлень про помилки.
+ * @type {NodeListOf&lt;HTMLElement>}
  */
 const smallElements = document.querySelectorAll("small");
 
@@ -92,12 +120,12 @@ const emptyResult = () => {
     emptyResultDiv.classList.add("pending");
     emptyResultDiv.classList.add("grd");
     emptyResultDiv.innerHTML = `
-    <img src="./assets/images/illustration-empty.svg" alt="">
-                        <h2 class="text-preset-2">Results shown here</h2>
-                        <p class="text-preset-4">
+    &lt;img src="./assets/images/illustration-empty.svg" alt="">
+                        &lt;h2 class="text-preset-2">Results shown here&lt;/h2>
+                        &lt;p class="text-preset-4">
                             Complete the form and click “calculate repayments” to see what your monthly repayments would
                             be.
-                        </p>
+                        &lt;/p>
     `;
     displayBlock.style.placeContent = "center";
     displayBlock.appendChild(emptyResultDiv);
@@ -278,10 +306,10 @@ function integerInput(value) {
 }
 
 /**
- * Додає клас "active" до внутрішнього елемента <span> всередині <label>, що містить передане поле.
+ * Додає клас "active" до внутрішнього елемента &lt;span> всередині &lt;label>, що містить передане поле.
  *
  * Використовується для візуального підсвічування при взаємодії з полем вводу.
- * Передбачається, що структура HTML має <label>, всередині якого є <span> для стилізації.
+ * Передбачається, що структура HTML має &lt;label>, всередині якого є &lt;span> для стилізації.
  *
  * @param {HTMLInputElement} element - Елемент вводу, який викликав подію.
  * @returns {void}
@@ -295,10 +323,10 @@ function addBgOnInput(element) {
     innerSpan.classList.add("active");
 }
 /**
- * Видаляє клас "active" з внутрішнього елемента <span> всередині <label>, що містить передане поле.
+ * Видаляє клас "active" з внутрішнього елемента &lt;span> всередині &lt;label>, що містить передане поле.
  *
  * Використовується для зняття візуального підсвічування, коли поле вводу втрачає фокус.
- * Передбачається, що HTML-структура містить <label> з <span> для стилізації.
+ * Передбачається, що HTML-структура містить &lt;label> з &lt;span> для стилізації.
  *
  * @param {HTMLInputElement} element - Елемент вводу, який втратив фокус.
  * @returns {void}
@@ -381,8 +409,8 @@ function calculate(amount, term, rate, mortgageType = "repayment") {
  * Перевіряє, чи заповнене поле вводу, і оновлює відповідні стилі та повідомлення.
  *
  * Якщо поле порожнє:
- * - додає класи "invalid" та "invalid-prefix-suffix" до <label>,
- * - показує повідомлення "This field is required" у сусідньому <small>.
+ * - додає класи "invalid" та "invalid-prefix-suffix" до &lt;label>,
+ * - показує повідомлення "This field is required" у сусідньому &lt;small>.
  *
  * Якщо поле заповнене:
  * - прибирає стилі помилки,
@@ -414,12 +442,12 @@ function isValidInput(element) {
  * Перевіряє, чи вибрано хоча б одну радіо-кнопку з переданої колекції.
  *
  * Якщо жодна кнопка не вибрана:
- * - показує повідомлення "This field is required" у відповідному <small> елементі.
+ * - показує повідомлення "This field is required" у відповідному &lt;small> елементі.
  *
  * Якщо хоча б одна кнопка вибрана:
  * - очищає повідомлення про помилку.
  *
- * @param {NodeListOf<HTMLInputElement>} elements - Колекція радіо-кнопок для перевірки.
+ * @param {NodeListOf&lt;HTMLInputElement>} elements - Колекція радіо-кнопок для перевірки.
  * @returns {boolean|undefined} - `true`, якщо вибрано хоча б одну кнопку; `false`, якщо жодну; `undefined`, якщо колекція порожня.
  *
  * @example
@@ -469,24 +497,24 @@ function showResult(monthly, total) {
     const resultDiv = document.createElement("div");
     resultDiv.classList.add("grd");
     resultDiv.classList.add("result");
-    resultDiv.innerHTML = `<div>
-                            <h2 class="text-preset-2">Your results</h2>
-                            <p class="text-preset-4">
+    resultDiv.innerHTML = `&lt;div>
+                            &lt;h2 class="text-preset-2">Your results&lt;/h2>
+                            &lt;p class="text-preset-4">
                                 Your results are shown below based on the information you provided. To adjust the results,
                                 edit the form and click “calculate repayments” again.
-                            </p>
-                        </div>
-                        <div class="card grd">
-                            <div>
-                                <p class="text-preset-4">Your monthly repayments</p>
-                                <p><span class="text-preset-1 big-numbers">${formattedMonthly}</span></p>
-                            </div>
-                            <hr>
-                            <div>
-                                <p class="text-preset-4">Total you'll repay over the term</p>
-                                <p><span class="text-preset-2 small-numbers">${formattedTotal}</span></p>
-                            </div>
-                        </div>`;
+                            &lt;/p>
+                        &lt;/div>
+                        &lt;div class="card grd">
+                            &lt;div>
+                                &lt;p class="text-preset-4">Your monthly repayments&lt;/p>
+                                &lt;p>&lt;span class="text-preset-1 big-numbers">${formattedMonthly}&lt;/span>&lt;/p>
+                            &lt;/div>
+                            &lt;hr>
+                            &lt;div>
+                                &lt;p class="text-preset-4">Total you'll repay over the term&lt;/p>
+                                &lt;p>&lt;span class="text-preset-2 small-numbers">${formattedTotal}&lt;/span>&lt;/p>
+                            &lt;/div>
+                        &lt;/div>`;
     displayBlock.style.placeContent = "start";
     displayBlock.appendChild(resultDiv);
 }
@@ -510,7 +538,7 @@ function mainProcess() {
     const allValidRadioButtons = isValidRadioElements(buttonsMortgageType);
     const allValidFields = validFields.every((field) => field);
 
-    if (allValidRadioButtons && allValidFields) {
+    if (allValidRadioButtons &amp;&amp; allValidFields) {
         const amount = parseInt(amountInput.value);
         const years = parseInt(termInput.value);
         const interest = parseFloat(rateInput.value);
@@ -522,3 +550,26 @@ function mainProcess() {
 }
 
 emptyResult();
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Events</h3><ul><li><a href="global.html#event:click">click</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addBgOnInput">addBgOnInput</a></li><li><a href="global.html#amountInput">amountInput</a></li><li><a href="global.html#buttonCalculate">buttonCalculate</a></li><li><a href="global.html#buttonClear">buttonClear</a></li><li><a href="global.html#buttonsMortgageType">buttonsMortgageType</a></li><li><a href="global.html#calculate">calculate</a></li><li><a href="global.html#clearChecked">clearChecked</a></li><li><a href="global.html#clearDisplayBlock">clearDisplayBlock</a></li><li><a href="global.html#clearErrors">clearErrors</a></li><li><a href="global.html#clearForm">clearForm</a></li><li><a href="global.html#clearRadioBackground">clearRadioBackground</a></li><li><a href="global.html#clearTextContent">clearTextContent</a></li><li><a href="global.html#colorLimeLight">colorLimeLight</a></li><li><a href="global.html#currency">currency</a></li><li><a href="global.html#currentLocale">currentLocale</a></li><li><a href="global.html#decimalInput">decimalInput</a></li><li><a href="global.html#displayBlock">displayBlock</a></li><li><a href="global.html#emptyResult">emptyResult</a></li><li><a href="global.html#formCalculator">formCalculator</a></li><li><a href="global.html#getRepaymentType">getRepaymentType</a></li><li><a href="global.html#inputFields">inputFields</a></li><li><a href="global.html#integerInput">integerInput</a></li><li><a href="global.html#isValidInput">isValidInput</a></li><li><a href="global.html#isValidRadioElements">isValidRadioElements</a></li><li><a href="global.html#mainProcess">mainProcess</a></li><li><a href="global.html#rateInput">rateInput</a></li><li><a href="global.html#removeBgOnBlur">removeBgOnBlur</a></li><li><a href="global.html#showResult">showResult</a></li><li><a href="global.html#smallElements">smallElements</a></li><li><a href="global.html#termInput">termInput</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Wed Aug 13 2025 16:48:52 GMT+0300 (за східноєвропейським літнім часом)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
